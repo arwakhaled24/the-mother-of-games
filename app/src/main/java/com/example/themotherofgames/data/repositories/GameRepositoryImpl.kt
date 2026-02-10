@@ -1,6 +1,6 @@
 package com.example.themotherofgames.data.repositories
 
-import com.example.themotherofgames.data.dto.toDomain
+import com.example.themotherofgames.data.mapper.toDomain
 import com.example.themotherofgames.data.remote.GamesKtorService
 import com.example.themotherofgames.domain.model.Game
 import com.example.themotherofgames.domain.repositories.GamesRepository

@@ -1,5 +1,6 @@
-package com.example.themotherofgames.data.dto
+package com.example.themotherofgames.data.mapper
 
+import com.example.themotherofgames.data.dto.GameDto
 import com.example.themotherofgames.domain.model.Game
 
 fun GameDto.toDomain(): Game {

@@ -26,8 +26,10 @@ import com.example.themotherofgames.domain.model.Game
 @Composable
 fun GameCard(
     game: Game,
+    onClick: () -> Unit = {}
 ) {
     Card(
+        onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(12.dp)

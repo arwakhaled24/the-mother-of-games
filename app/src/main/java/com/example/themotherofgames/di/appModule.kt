@@ -1,9 +1,13 @@
 package com.example.themotherofgames.di
 
 import com.example.themotherofgames.data.remote.GamesKtorService
+import com.example.themotherofgames.data.repositories.GameDetailsRepositoryImpl
 import com.example.themotherofgames.data.repositories.GameRepositoryImpl
+import com.example.themotherofgames.domain.repositories.GameDetailsRepository
 import com.example.themotherofgames.domain.repositories.GamesRepository
+import com.example.themotherofgames.domain.usecase.GetGameDetailsUseCase
 import com.example.themotherofgames.domain.usecase.GetGamesUseCase
+import com.example.themotherofgames.presentation.viewmodel.gamedetails.GameDetailsViewModel
 import com.example.themotherofgames.presentation.viewmodel.games.GamesViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
@@ -37,16 +41,22 @@ val appModule = module {
             client = get(),
         )
     }
-
     single<GamesRepository> {
         GameRepositoryImpl(apiService = get())
     }
-
+    single<GameDetailsRepository> {
+        GameDetailsRepositoryImpl(apiService = get())
+    }
     single {
         GetGamesUseCase(
             gamesRepository = get()
         )
     }
-
+    single {
+        GetGameDetailsUseCase(
+            gameDetailsRepository = get()
+        )
+    }
     viewModel { GamesViewModel(getGamesUseCase = get()) }
+    viewModel { GameDetailsViewModel(getGameDetailsUseCase = get()) }
 }
